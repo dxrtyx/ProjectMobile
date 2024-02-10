@@ -179,15 +179,24 @@ fun SettItem(title: String, desc: String, icon: Int, modifier: Modifier = Modifi
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
             .fillMaxWidth()
+            .padding(top = 40.dp)
             .padding(horizontal = 21.dp)
     ){
-        Box() {
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = modifier
+                .width(46.dp)
+                .height(46.dp)
+                .fillMaxHeight()
+                .clip(RoundedCornerShape(50))
+                .background(Color(0xFFE2E3D8))
+        ){
             Image(painter = painterResource(id = icon),
             contentDescription = "Wifi Icon")
         }
         Spacer(modifier.width(17.dp))
         Column {
-            Text(text = header,
+            Text(text = title,
                 fontSize = 20.sp,
                 fontFamily = robotoFontFamily,
                 fontWeight = FontWeight.Medium
