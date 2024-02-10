@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -56,26 +59,71 @@ fun Settings(tab: String, modifier: Modifier = Modifier) {
                     .fillMaxWidth()
                     .padding(horizontal = 21.dp)
                 ) {
+                    Spacer(modifier.height(15.dp))
                     Image(
                         painter = painterResource(id = R.drawable.avatar),
-                        contentDescription = "user photo",
+                        contentDescription = "avatar",
                         modifier = modifier
-                            .width(51.dp)
-                            .height(51.dp)
-                            .align(alignment = Alignment.End)
                             .clip(RoundedCornerShape(50))
+                            .align(alignment = Alignment.End)
+                            .height(51.dp)
+                            .width(51.dp)
                     )
+                    Spacer(modifier.height(15.dp))
                     Text(
                         tab,
+                        fontFamily = robotoFontFamily,
+                        fontWeight = FontWeight.Normal,
                         fontSize = 36.sp,
                         textAlign = TextAlign.Start,
-                        fontFamily = robotoFontFamily,
-                        fontWeight = FontWeight.Normal
+                        modifier = modifier
+                    )
+                }
+                PhoneDesc(
+                title = "Get to know your Pixel",
+                desc = "Explore what you can do with your phone",
+                icon = R.drawable.settings
+                )
+            }
+        }
+}
 
+@Composable
+fun PhoneDesc(title: String, desc: String, icon: Int, modifier: Modifier = Modifier) {
+    Column(modifier.fillMaxWidth()) {
+        Surface(
+            modifier = modifier
+                .fillMaxWidth()
+        ) {
+            Row(
+                modifier = modifier
+                    .background(color = colorResource(id = R.color.primary))
+            ) {
+                Image(
+                    painter = painterResource(id = icon),
+                    contentDescription = "avatar",
+                    modifier = modifier
+                        .width(50.dp)
+                        .padding(10.dp)
+                        .align(alignment = Alignment.CenterVertically)
+                )
+                Column(
+                    modifier = modifier
+                        .padding(10.dp),
+                ) {
+                    Text(
+                        text = title,
+                        fontSize = 21.sp,
+                    )
+                    Text(
+                        text = desc,
+                        fontSize = 14.sp,
                     )
                 }
             }
+
         }
+    }
 }
 
 @Preview(showBackground = true, showSystemUi = true)
