@@ -47,24 +47,35 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Settings(tab: String, modifier: Modifier = Modifier) {
     Surface(
-        modifier = Modifier.fillMaxSize(), color = colorResource(id = R.color.secondary)
-    ) {
-        Column {
-            Column() {
-                Image(
-                    painter = painterResource(id = R.drawable.avatar),
-                    contentDescription = "avatar",
-                    modifier = modifier
-                        .height(51.dp)
-                        .width(51.dp)
-                )
-                Text(
-                    tab,
-                    fontSize = 36.sp,
-                )
+        modifier = Modifier.fillMaxSize(),
+        color = colorResource(id = R.color.secondary
+    )
+        ) {
+            Column {
+                Column( modifier = modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 21.dp)
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.avatar),
+                        contentDescription = "user photo",
+                        modifier = modifier
+                            .width(51.dp)
+                            .height(51.dp)
+                            .align(alignment = Alignment.End)
+                            .clip(RoundedCornerShape(50))
+                    )
+                    Text(
+                        tab,
+                        fontSize = 36.sp,
+                        textAlign = TextAlign.Start,
+                        fontFamily = robotoFontFamily,
+                        fontWeight = FontWeight.Normal
+
+                    )
+                }
             }
         }
-    }
 }
 
 @Preview(showBackground = true, showSystemUi = true)
