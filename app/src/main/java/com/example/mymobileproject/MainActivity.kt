@@ -58,7 +58,8 @@ fun Settings(tab: String, modifier: Modifier = Modifier) {
     )
         ) {
             Column {
-                Column( modifier = modifier
+                Column(
+                    modifier = modifier
                     .fillMaxWidth()
                     .padding(horizontal = 21.dp)
                 ) {
@@ -71,7 +72,6 @@ fun Settings(tab: String, modifier: Modifier = Modifier) {
                             .align(alignment = Alignment.End)
                             .height(51.dp)
                             .width(51.dp))
-
                     Spacer(modifier.height(15.dp))
                     Text(
                         tab,
@@ -82,18 +82,38 @@ fun Settings(tab: String, modifier: Modifier = Modifier) {
                         modifier = modifier)
                 }
                 PhoneDesc(
-                title = "Get to know your Pixel",
-                desc = "Explore what you can do with your phone",
-                icon = R.drawable.settings)
+                    title = "Get to know your Pixel",
+                    desc = "Explore what you can do with your phone",
+                    icon = R.drawable.settings)
 
                 Search(
-                search = "Search Settings...",
-                icon = R.drawable.search)
+                    search = "Search Settings...",
+                    icon = R.drawable.search)
 
                 SettItem(
-                title = "Network & Internet",
-                desc = "Wi-Fi, Mobile, Data usage, Hotspot",
-                icon = R.drawable.wifi)
+                    title = "Network & Internet",
+                    desc = "Wi-Fi, Mobile, Data usage, Hotspot",
+                    icon = R.drawable.wifi)
+
+                SettItem(
+                    title = "Connected devices",
+                    desc = "Bluetooth, Cast, NFC",
+                    icon = R.drawable.devices)
+
+                SettItem(
+                    title = "App",
+                    desc = "Permission, default apps",
+                    icon = R.drawable.apps)
+
+                SettItem(
+                    title = "Notifications",
+                    desc = "Permissions, default apps",
+                    icon = R.drawable.notifications)
+
+                SettItem(
+                    title = "Digital wellbeing",
+                    desc = "Screen time, app timer, bedtime schedules",
+                    icon = R.drawable.accessibility)
             }
         }
 }
@@ -158,16 +178,14 @@ fun Search(search: String, icon: Int, modifier: Modifier = Modifier) {
                         .width(40.dp)
                         .padding(10.dp)
                         .clip(RoundedCornerShape(50))
-                        .align(alignment = Alignment.CenterVertically)
-                )
+                        .align(alignment = Alignment.CenterVertically))
                 Text(
                     text = search,
                     fontSize = 18.sp,
                     fontFamily = robotoFontFamily,
                     fontWeight = FontWeight.Normal,
                     modifier = modifier
-                        .align(alignment = Alignment.CenterVertically)
-                )
+                        .align(alignment = Alignment.CenterVertically))
             }
         }
     }
@@ -196,17 +214,17 @@ fun SettItem(title: String, desc: String, icon: Int, modifier: Modifier = Modifi
         }
         Spacer(modifier.width(17.dp))
         Column {
-            Text(text = title,
+            Text(
+                text = title,
                 fontSize = 20.sp,
                 fontFamily = robotoFontFamily,
-                fontWeight = FontWeight.Medium
-            )
+                fontWeight = FontWeight.Medium)
             Spacer(modifier.height(4.dp))
-            Text(text = desc,
+            Text(
+                text = desc,
                 fontSize = 14.sp,
                 fontFamily = robotoFontFamily,
-                fontWeight = FontWeight.Normal,
-            )
+                fontWeight = FontWeight.Normal)
         }
     }
 }
