@@ -62,13 +62,13 @@ fun Settings(tab: String, modifier: Modifier = Modifier) {
                     Spacer(modifier.height(15.dp))
                     Image(
                         painter = painterResource(id = R.drawable.avatar),
-                        contentDescription = "avatar",
+                        contentDescription = "Users Photo",
                         modifier = modifier
                             .clip(RoundedCornerShape(50))
                             .align(alignment = Alignment.End)
                             .height(51.dp)
-                            .width(51.dp)
-                    )
+                            .width(51.dp))
+
                     Spacer(modifier.height(15.dp))
                     Text(
                         tab,
@@ -76,24 +76,27 @@ fun Settings(tab: String, modifier: Modifier = Modifier) {
                         fontWeight = FontWeight.Normal,
                         fontSize = 36.sp,
                         textAlign = TextAlign.Start,
-                        modifier = modifier
-                    )
+                        modifier = modifier)
                 }
                 PhoneDesc(
                 title = "Get to know your Pixel",
                 desc = "Explore what you can do with your phone",
-                icon = R.drawable.settings
-                )
+                icon = R.drawable.settings)
+                Search(search = "Search Settings...",
+                icon = R.drawable.search)
             }
         }
 }
 
 @Composable
 fun PhoneDesc(title: String, desc: String, icon: Int, modifier: Modifier = Modifier) {
+    Spacer(modifier.height(23.dp))
     Column(modifier.fillMaxWidth()) {
         Surface(
             modifier = modifier
                 .fillMaxWidth()
+                .padding(horizontal = 21.dp),
+            shape = RoundedCornerShape(25.dp)
         ) {
             Row(
                 modifier = modifier
@@ -101,12 +104,12 @@ fun PhoneDesc(title: String, desc: String, icon: Int, modifier: Modifier = Modif
             ) {
                 Image(
                     painter = painterResource(id = icon),
-                    contentDescription = "avatar",
+                    contentDescription = "Settings Icon",
                     modifier = modifier
-                        .width(50.dp)
+                        .width(40.dp)
                         .padding(10.dp)
-                        .align(alignment = Alignment.CenterVertically)
-                )
+                        .clip(RoundedCornerShape(50))
+                        .align(alignment = Alignment.CenterVertically))
                 Column(
                     modifier = modifier
                         .padding(10.dp),
@@ -114,14 +117,48 @@ fun PhoneDesc(title: String, desc: String, icon: Int, modifier: Modifier = Modif
                     Text(
                         text = title,
                         fontSize = 21.sp,
-                    )
+                        fontFamily = robotoFontFamily,
+                        fontWeight = FontWeight.Medium)
                     Text(
                         text = desc,
                         fontSize = 14.sp,
-                    )
+                        fontFamily = robotoFontFamily,
+                        fontWeight = FontWeight.Normal)
                 }
             }
+        }
+    }
+}
 
+@Composable
+fun Search(search: String, icon: Int, modifier: Modifier = Modifier) {
+    Spacer(modifier.height(15.dp))
+    Column(modifier.fillMaxWidth()) {
+        Surface(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(horizontal = 21.dp),
+            shape = RoundedCornerShape(25.dp)
+        ) {
+            Row {
+                Image(
+                    painter = painterResource(id = icon),
+                    contentDescription = "Search Icon",
+                    modifier = modifier
+                        .width(40.dp)
+                        .padding(10.dp)
+                        .clip(RoundedCornerShape(50))
+                        .align(alignment = Alignment.CenterVertically)
+                )
+                Text(
+                    text = search,
+                    fontSize = 18.sp,
+                    fontFamily = robotoFontFamily,
+                    fontWeight = FontWeight.Normal,
+                    modifier = modifier
+                        .align(alignment = Alignment.CenterVertically)
+                )
+            }
         }
     }
 }
