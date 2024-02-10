@@ -5,9 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -22,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -82,8 +85,15 @@ fun Settings(tab: String, modifier: Modifier = Modifier) {
                 title = "Get to know your Pixel",
                 desc = "Explore what you can do with your phone",
                 icon = R.drawable.settings)
-                Search(search = "Search Settings...",
+
+                Search(
+                search = "Search Settings...",
                 icon = R.drawable.search)
+
+                SettItem(
+                title = "Network & Internet",
+                desc = "Wi-Fi, Mobile, Data usage, Hotspot",
+                icon = R.drawable.wifi)
             }
         }
 }
@@ -162,6 +172,36 @@ fun Search(search: String, icon: Int, modifier: Modifier = Modifier) {
         }
     }
 }
+
+@Composable
+fun SettItem(title: String, desc: String, icon: Int, modifier: Modifier = Modifier) {
+    Row (
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = 21.dp)
+    ){
+        Box() {
+            Image(painter = painterResource(id = icon),
+            contentDescription = "Wifi Icon")
+        }
+        Spacer(modifier.width(17.dp))
+        Column {
+            Text(text = header,
+                fontSize = 20.sp,
+                fontFamily = robotoFontFamily,
+                fontWeight = FontWeight.Medium
+            )
+            Spacer(modifier.height(4.dp))
+            Text(text = desc,
+                fontSize = 14.sp,
+                fontFamily = robotoFontFamily,
+                fontWeight = FontWeight.Normal,
+            )
+        }
+    }
+}
+
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
